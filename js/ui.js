@@ -19,6 +19,26 @@ const ui = {
         catch{
             alert('Erro ao renderizar os pensamentos');
         }
+    },
+
+    adicionarPensamentoNaLista(pensamento) {
+        const listaPensamentos = document.getElementById('lista-pensamentos');
+        const li = document.createEelement('li');
+        li.setAttribute('data-id', pensamento.id);
+        li.classList.add('li-pensamento');
+
+        const iconeAspas = document.createElement('img');
+        iconeAspas.src = 'assets/imagens/aspas-azuis.png';
+        iconeAspas.alt = 'Aspas Azuis';
+        iconeAspas.classList.add('icone-aspas');
+
+        const pensamentoConteudo = document.createElement('div');
+        pensamentoConteudo.textContent = pensamento.conteudo;
+        pensamentoConteudo.classList.add('pensamento-conteudo');
+
+        const pensamentoAutoria = document.createElement('div');
+        pensamentoAutoria.textContent = pensamento.autoria;
+        pensamentoAutoria.classList.add('pensamento-autoria');
     }
 };
 
