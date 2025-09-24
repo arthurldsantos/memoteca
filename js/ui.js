@@ -4,18 +4,18 @@ const ui = {
     async renderizarPensamentos() {
         const listaPensamentos = document.getElementById('lista-pensamentos');
 
-        try{
+        try {
             const pensamentos = await api.buscarPensamentos();
             pensamentos.forEach(ui.adicionarPensamentoNaLista);
         }
-        catch{
+        catch {
             alert('Erro ao renderizar os pensamentos');
         }
     },
 
     adicionarPensamentoNaLista(pensamento) {
         const listaPensamentos = document.getElementById('lista-pensamentos');
-        const li = document.createEelement('li');
+        const li = document.createElement('li');
         li.setAttribute('data-id', pensamento.id);
         li.classList.add('li-pensamento');
 
