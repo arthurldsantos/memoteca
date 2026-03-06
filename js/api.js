@@ -3,8 +3,8 @@ const URL_BASE = 'http://localhost:3000';
 const api = {
     async buscarPensamentos() {
         try {
-            const response = await fetch(`${URL_BASE}/pensamentos`);
-            return await response.json();
+            const response = await axios.get(`${URL_BASE}/pensamentos`);
+            return await response.data;
         }
         catch{
             alert('Erro ao buscar pensamentos');
@@ -14,14 +14,8 @@ const api = {
 
     async salvarPensamento(pensamento) {
         try{
-            const response = await fetch(`${URL_BASE}/pensamentos`, {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify(pensamento)
-            });
-            return await response.json();
+            const response = await axios.post(`${URL_BASE}/pensamentos`, pensamento);
+            return await response.data;
         }
         catch{
             alert('Erro ao salvar pensamentos');
