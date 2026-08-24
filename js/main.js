@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const botaoCancelar = document.getElementById('botao-cancelar');
     botaoCancelar.addEventListener('click', manipularCancelamento);
+
+    const inputBusca = document.getElementById('campo-busca');
+    inputBusca.addEventListener('input', manipularBusca);
 });
 
 async function manipularSubmissaoFormulario(event) {
@@ -33,4 +36,14 @@ async function manipularSubmissaoFormulario(event) {
 
 function manipularCancelamento() {
     ui.limparFormulario();
+}
+
+async function manipularBusca() {
+    const termoBusca = document.getElementById('campo-busca').value;
+    try {
+        const pensamentosFiltrados = await api.buscarPensamentosPorTermo(termoBusca);
+        ui.renderizarPensamentos(pensamentosFiltrados);
+    } catch (error) {
+        alert('Erro ao buscar pelos pensamentos filtrados');
+    }
 }
